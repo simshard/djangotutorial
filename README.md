@@ -5,3 +5,5 @@ a basic poll application.
 
     An admin site that lets you add, change, and delete polls.
 
+    using tailwind css hopefully
+
