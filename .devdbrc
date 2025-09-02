@@ -1,0 +1,6 @@
+[
+  {
+    "type": "sqlite",
+    "path": "/home/simon/projects/djangotutorial/db.sqlite3"
+  }
+]

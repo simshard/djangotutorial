@@ -1,11 +1,18 @@
+{% load static tailwind_tags %}
 <!DOCTYPE html>
 <html lang="en">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
+    <title>Poll detail</title>
+    {% tailwind_css %}
 </head>
-<body>
-    {{ question }}
+<body class="px-6 py-8 bg-gray-500 text-white">
+    <h1>{{ question.question_text }}</h1>
+<ul class="mt-4 list-disc list-inside">
+{% for choice in question.choice_set.all %}
+    <li>{{ choice.choice_text }}</li>
+{% endfor %}
+</ul>
 </body>
 </html>
