@@ -5,7 +5,7 @@ a basic poll application.
 
     An admin site that lets you add, change, and delete polls.
 
-    using tailwind css  and daiyUI components
+    using tailwind css  and daisyUI components https://daisyui.com/
 
 
 __starting the webserver__
