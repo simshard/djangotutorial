@@ -8,11 +8,19 @@
     {% tailwind_css %}
 </head>
 <body class="px-6 py-8 bg-gray-500 text-white">
-    <h1>{{ question.question_text }}</h1>
-<ul class="mt-4 list-disc list-inside">
-{% for choice in question.choice_set.all %}
-    <li>{{ choice.choice_text }}</li>
-{% endfor %}
-</ul>
+    <form action="{% url 'polls:vote' question.id %}" method="post">
+{% csrf_token %}
+<fieldset>
+    <legend><h1>{{ question.question_text }}</h1></legend>
+    {% if error_message %}<p><strong>{{ error_message }}</strong></p>{% endif %}
+    {% for choice in question.choice_set.all %}
+    <span class="p-2"> 
+        <input type="radio" name="choice" id="choice{{ forloop.counter }}" value="{{ choice.id }}">
+        <label for="choice{{ forloop.counter }}">{{ choice.choice_text }}</label></span><br>
+    {% endfor %}
+</fieldset>
+<input class="btn btn-primary mt-2" type="submit" value="Vote">
+</form>
+
 </body>
 </html>

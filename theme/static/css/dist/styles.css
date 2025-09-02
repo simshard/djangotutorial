@@ -1,4 +1,5 @@
 /*! tailwindcss v4.1.12 | MIT License | https://tailwindcss.com */
+@layer properties;
 @layer theme, base, components, utilities;
 @layer theme {
   :root, :host {
@@ -6,6 +7,8 @@
       "Segoe UI Emoji", "Segoe UI Symbol", "Noto Color Emoji";
     --font-mono: ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, "Liberation Mono",
       "Courier New", monospace;
+    --color-blue-500: oklch(62.3% 0.214 259.815);
+    --color-blue-700: oklch(48.8% 0.243 264.376);
     --color-gray-500: oklch(55.1% 0.027 264.364);
     --color-white: #fff;
     --spacing: 0.25rem;
@@ -15,6 +18,7 @@
     --text-2xl--line-height: calc(2 / 1.5);
     --text-5xl: 3rem;
     --text-5xl--line-height: 1;
+    --font-weight-bold: 700;
     --default-font-family: var(--font-sans);
     --default-mono-font-family: var(--font-mono);
   }
@@ -424,6 +428,83 @@
     bottom: auto;
     --toast-y: 0;
   }
+  .sr-only {
+    position: absolute;
+    width: 1px;
+    height: 1px;
+    padding: 0;
+    margin: -1px;
+    overflow: hidden;
+    clip: rect(0, 0, 0, 0);
+    white-space: nowrap;
+    border-width: 0;
+  }
+  .radio {
+    position: relative;
+    display: inline-block;
+    flex-shrink: 0;
+    cursor: pointer;
+    appearance: none;
+    border-radius: calc(infinity * 1px);
+    padding: calc(0.25rem * 1);
+    vertical-align: middle;
+    border: var(--border) solid var(--input-color, currentColor);
+  }
+  @supports (color: color-mix(in lab, red, red)) {
+    .radio {
+      border: var(--border) solid var(--input-color, color-mix(in srgb, currentColor 20%, #0000));
+    }
+  }
+  .radio {
+    box-shadow: 0 1px oklch(0% 0 0 / calc(var(--depth) * 0.1)) inset;
+    --size: calc(var(--size-selector, 0.25rem) * 6);
+    width: var(--size);
+    height: var(--size);
+    color: var(--input-color, currentColor);
+  }
+  .radio:before {
+    display: block;
+    width: 100%;
+    height: 100%;
+    border-radius: calc(infinity * 1px);
+    --tw-content: "";
+    content: var(--tw-content);
+    background-size: auto, calc(var(--noise) * 100%);
+    background-image: none, var(--fx-noise);
+  }
+  .radio:focus-visible {
+    outline: 2px solid currentColor;
+  }
+  .radio:checked, .radio[aria-checked="true"] {
+    border-color: currentColor;
+    background-color: var(--color-base-100);
+  }
+  @media (prefers-reduced-motion: no-preference) {
+    .radio:checked, .radio[aria-checked="true"] {
+      animation: radio 0.2s ease-out;
+    }
+  }
+  .radio:checked:before, .radio[aria-checked="true"]:before {
+    background-color: currentColor;
+    box-shadow: 0 -1px oklch(0% 0 0 / calc(var(--depth) * 0.1)) inset, 0 8px 0 -4px oklch(100% 0 0 / calc(var(--depth) * 0.1)) inset, 0 1px oklch(0% 0 0 / calc(var(--depth) * 0.1));
+  }
+  @media (forced-colors: active) {
+    .radio:checked:before, .radio[aria-checked="true"]:before {
+      outline-style: var(--tw-outline-style);
+      outline-width: 1px;
+      outline-offset: calc(1px * -1);
+    }
+  }
+  @media print {
+    .radio:checked:before, .radio[aria-checked="true"]:before {
+      outline: 0.25rem solid;
+      outline-offset: -1rem;
+    }
+  }
+  .radio:disabled {
+    cursor: not-allowed;
+    opacity: 20%;
+  }
   .static {
     position: static;
   }
@@ -458,8 +539,14 @@
   .mx-auto {
     margin-inline: auto;
   }
+  .mt-2 {
+    margin-top: calc(var(--spacing) * 2);
+  }
   .mt-4 {
     margin-top: calc(var(--spacing) * 4);
+  }
+  .mb-2 {
+    margin-bottom: calc(var(--spacing) * 2);
   }
   .alert {
     display: grid;
@@ -542,16 +629,40 @@
   .justify-center {
     justify-content: center;
   }
+  .rounded {
+    border-radius: 0.25rem;
+  }
   .alert-info {
     border-color: var(--color-info);
     color: var(--color-info-content);
     --alert-color: var(--color-info);
   }
+  .bg-blue-500 {
+    background-color: var(--color-blue-500);
+  }
   .bg-gray-500 {
     background-color: var(--color-gray-500);
   }
+  .p-2 {
+    padding: calc(var(--spacing) * 2);
+  }
+  .p-4 {
+    padding: calc(var(--spacing) * 4);
+  }
+  .px-2 {
+    padding-inline: calc(var(--spacing) * 2);
+  }
+  .px-4 {
+    padding-inline: calc(var(--spacing) * 4);
+  }
   .px-6 {
     padding-inline: calc(var(--spacing) * 6);
+  }
+  .py-2 {
+    padding-block: calc(var(--spacing) * 2);
+  }
+  .py-4 {
+    padding-block: calc(var(--spacing) * 4);
   }
   .py-8 {
     padding-block: calc(var(--spacing) * 8);
@@ -568,12 +679,25 @@
     font-size: var(--text-xl);
     line-height: var(--tw-leading, var(--text-xl--line-height));
   }
+  .font-bold {
+    --tw-font-weight: var(--font-weight-bold);
+    font-weight: var(--font-weight-bold);
+  }
   .text-white {
     color: var(--color-white);
+  }
+  .btn-primary {
+    --btn-color: var(--color-primary);
+    --btn-fg: var(--color-primary-content);
   }
   .btn-warning {
     --btn-color: var(--color-warning);
     --btn-fg: var(--color-warning-content);
+  }
+  @media (hover: hover) {
+    .hover\:bg-blue-700:hover {
+      background-color: var(--color-blue-700);
+    }
   }
 }
 @layer base {
@@ -798,5 +922,16 @@
 @keyframes progress {
   50% {
     background-position-x: -115%;
+  }
+}
+@property --tw-font-weight {
+  syntax: "*";
+  inherits: false;
+}
+@layer properties {
+  @supports ((-webkit-hyphens: none) and (not (margin-trim: inline))) or ((-moz-orient: inline) and (not (color:rgb(from red r g b)))) {
+    *, ::before, ::after, ::backdrop {
+      --tw-font-weight: initial;
+    }
   }
 }
