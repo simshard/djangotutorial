@@ -10,7 +10,10 @@ a basic poll application.
 
 __starting the webserver__
   
-``` python3 manage.py runserver ```
+``` 
+python3 manage.py runserver 
     
-``` python3 manage.py tailwind start```
+python3 manage.py tailwind start
+
+```
  
