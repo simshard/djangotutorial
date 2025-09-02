@@ -7,3 +7,10 @@ a basic poll application.
 
     using tailwind css hopefully
 
+
+__starting the webserver__
+  
+``` python3 manage.py runserver ```
+    
+``` python3 manage.py tailwind start```
+ 
