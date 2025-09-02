@@ -5,7 +5,7 @@ a basic poll application.
 
     An admin site that lets you add, change, and delete polls.
 
-    using tailwind css hopefully
+    using tailwind css  and daiyUI components
 
 
 __starting the webserver__
@@ -16,4 +16,4 @@ python3 manage.py runserver
 python3 manage.py tailwind start
 
 ```
- 
+
