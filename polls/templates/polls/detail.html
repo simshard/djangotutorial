@@ -8,17 +8,16 @@
     {% tailwind_css %}
 </head>
 <body class="px-6 py-8 bg-gray-500 text-white">
-    <nav class="max-w-md p-4 text-center mb-8">
-    <ul class="flex justify-center">
-      <li class="mr-4"><a href="{% url 'polls:index' %}" class="text-white hover:text-blue-300">Polls</a></li>
-      <!-- <li class="mr-4"><a href="#" class="text-white hover:text-blue-300">Link 2</a></li> -->
+<nav class="max-w-md p-4 text-center mb-2 bg-slate-400">
+    <ul class="flex justify-center text-xl font-bold">
+      <li class="mr-4"><a href="{% url 'polls:index' %}" class="text-white hover:text-blue-500">Polls</a></li>
     </ul>
   </nav>
     <form action="{% url 'polls:vote' question.id %}" method="post">
 {% csrf_token %}
 <fieldset>
     <legend><h1>{{ question.question_text }}</h1></legend>
-    {% if error_message %}<p><strong>{{ error_message }}</strong></p>{% endif %}
+    {% if error_message %}<p class="text-red-800  font-weight-light">{{ error_message }}</p>{% endif %}
     {% for choice in question.choice_set.all %}
     <span class="p-2"> 
         <input type="radio" name="choice" id="choice{{ forloop.counter }}" value="{{ choice.id }}">

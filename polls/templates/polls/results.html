@@ -8,20 +8,22 @@
         {% tailwind_css %}
 </head>
 <body class="px-6 py-8 bg-slate-500 text-white">
-    <nav class="max-w-md p-4 text-center mb-8">
-    <ul class="flex justify-center">
-      <li class="mr-4"><a href="{% url 'polls:index' %}" class="text-white hover:text-blue-300">Polls</a></li>
+<nav class="max-w-md p-4 text-center mb-2 bg-slate-400">
+    <ul class="flex justify-center text-xl font-bold">
+      <li class="mr-4"><a href="{% url 'polls:index' %}" class="text-white hover:text-blue-500">Polls</a></li>
     </ul>
   </nav>
     <h1 class="text-2xl mb-4">{{ question.question_text }}</h1>
 
     <ul class="mt-4 list-disc list-inside">
 {% for choice in question.choice_set.all %}
-    <li>{{ choice.choice_text }} -- {{ choice.votes }} vote{{ choice.votes|pluralize }}</li>
+    <li>{{ choice.choice_text }} -- <span class="text-lg  italic text-slate-600">{{ choice.votes }} vote{{ choice.votes|pluralize }}</span></li>
 {% endfor %}
 </ul>
-
-<a class="btn btn-secondary mt-2 rounded-xl shadow" href="{% url 'polls:detail' question.id %}">Vote again?</a>
-<p><a class="text-lg text-gray-300 font-italic" href="{% url 'polls:index'  %}"> &laquo; Back to Polls</a></p>
+<div  class="mt-6">
+<p>
+   <a class="btn btn-outline btn-sm mt-2 rounded-xl shadow mr-6" href="{% url 'polls:detail' question.id %}">Vote again?</a>
+</p>
+</div>
 </body>
 </html>
