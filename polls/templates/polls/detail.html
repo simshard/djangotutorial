@@ -8,6 +8,12 @@
     {% tailwind_css %}
 </head>
 <body class="px-6 py-8 bg-gray-500 text-white">
+    <nav class="max-w-md p-4 text-center mb-8">
+    <ul class="flex justify-center">
+      <li class="mr-4"><a href="{% url 'polls:index' %}" class="text-white hover:text-blue-300">Polls</a></li>
+      <!-- <li class="mr-4"><a href="#" class="text-white hover:text-blue-300">Link 2</a></li> -->
+    </ul>
+  </nav>
     <form action="{% url 'polls:vote' question.id %}" method="post">
 {% csrf_token %}
 <fieldset>
